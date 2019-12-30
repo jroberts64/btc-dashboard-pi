@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react"
 import { Line } from "react-chartjs-2"
 
-const MempoolChart = props => {
-  console.log("MempoolChart called")
-  const [data, setData] = useState([])
+const LineChart = props => {
+  const [chartData, setChartData] = useState([])
+  const [timer, setTimer] = useState(0)
 
-  var labels = [];
-  var graphData = [];
+  var graphLabels = [];
+  var graphValues = [];
 
-  function setupData(labels, graphData) {
+  function setupChartData(labels, graphData) {
     var data = {
       labels: labels,
       datasets: [
         {
-          label: "Mempool Size (last 6 months)",
+          label: props.chartTitle,
           fill: true,
           lineTension: 0.1,
           backgroundColor: "rgba(75,192,192,0.4)",
@@ -38,46 +38,49 @@ const MempoolChart = props => {
     return data;
   }
   
-  function getXs(currentValue) {
+  function extractChartLabels(currentValue) {
     var d = new Date(currentValue.x*1000)
     var str = d.getMonth()+1 + "/" + d.getDate() + "/" + d.getFullYear()
     return ['Jan','Feb','Mar','Arp','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()] + " " + d.getDate()
-    return (d.getMonth()+1) + "/" + d.getDate() 
-    return str;
   }
 
-  function getYs(currentValue) {
+  function extractChartValues(currentValue) {
     return currentValue.y
   }
 
-  useEffect(() => {
-
-
+  function loadChartDataFromUrl() {
     if (typeof window !== `undefined`) {
-      fetch(
-        "https://api.blockchain.info/charts/mempool-size?timespan=180days&daysAverageString=7&format=json&cors=true",
-        {
-          credentials: "omit", // include, *same-origin, omit
-        }
-      )
+      fetch( props.url)
         .then(res => res.json())
         .then(json => {
-          console.log("memPool graph" + json)
-          labels = json.values.map(getXs)
-          graphData = json.values.map(getYs)
-          setData(setupData(labels,graphData))
+          graphLabels = json.values.map(extractChartLabels)
+          graphValues = json.values.map(extractChartValues)
+          setChartData(setupChartData(graphLabels,graphValues))
         })
         .catch(err => {
           console.log(err)   
         })
         
     }
-  }, [])
+  }
+
+  useEffect( () => {
+    console.log("priceChart timer = " + timer)
+    if (typeof window !== `undefined`) {
+      const id = window.setTimeout(() => {
+        loadChartDataFromUrl();
+        timer ? setTimer(-timer) : setTimer(300000) 
+      }, Math.abs(timer));
+      return () => {
+        window.clearTimeout(id);
+      };
+    }
+  },[timer]);
 
   return (
     <div>
-      <Line data={data} />
+      <Line data={chartData} />
     </div>
   )
 }
-export default MempoolChart
+export default LineChart

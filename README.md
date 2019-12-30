@@ -1,97 +1,130 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# Getting the OS on your Raspberry Pi
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+## Get Raspberry Pi on your SD card
+[These instructions](https://www.raspberrypi.org/documentation/installation/installing-images/) are
+more detailed. Or you can use my appreviated ones below.
+Open a terminal and move to a temporary folder.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+    cd ~/Downloads
 
-## 🚀 Quick start
+Download [Raspbian](https://www.raspberrypi.org/downloads/raspbian/)
+to your hard drive and unzip it.
 
-1.  **Create a Gatsby site.**
+    curl -L https://downloads.raspberrypi.org/raspbian_full_latest --output raspbian.zip
+    unzip raspbin.zip
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+Download [balenaEtcher](https://www.balena.io/etcher/). Run it and Point belanaEtcher at the Rasbian image
+and your SD card. When complete your SD card should be renamed to boot and cotain the rasbian image.
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+    ls /Volumes/boot
 
-1.  **Start developing.**
+## enable SSH
+    sudo touch /Volumes/boot/SSH
 
-    Navigate into your new site’s directory and start it up.
+## enable Wifi
+    sudo nano /Volumes/boot/ wpa_supplicant.conf
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+Then add the text below, replacing  \*\*ssid_name\*\* and \*\*ssid_password\*\* with your wifi name
+and password. Note: don't use your guest network. ssh won't work on your
+guest network assuming it is configured properly.
 
-1.  **Open the source code and start editing!**
+    country=US
+    update_config=1
+    ctrl_interface=/var/run/wpa_supplicant
+    
+    network={
+      scan_ssid=1
+      ssid="**ssid_name**"
+    psk="**ssid_password**"
+    }
 
-    Your site is now running at `http://localhost:8000`!
+# Configure your Raspberry Pi
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+## SSH into your Raspberry Pi
+Turn on your Raspberry Pi. LEDs should flash and it will connect to your Wifi. Choose your favorite
+method to figure out what devices are connected to your Wifi network and find the IP address of your
+Raspberry Pi. It'll look something like 192.168.1.62. We'll use this in our examples below.
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+    ssh pi@192.168.1.62
 
-## 🧐 What's inside?
+When asked for the password enter 'raspberry' without the quotes.
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+After logging in, change the default password using the command below so your raspberry can't be
+easily hacked!
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+    sudo raspi-config
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+Read the menu options and do the following:
+- change your password or you will be hacked!
+- Interfacing Options -> SSH -> Yes (note: the ssh file we added above is a one-time thing)
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+## Enable VNC Server
+Now let's install VNC Server so we have access to a GUI in case we want it in the future.
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+On your Mac, go to [this link](https://www.realvnc.com/en/connect/download/viewer/) to
+download and then install the Real VNC Viewer.
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+On your Raspberry Pi, run the following:
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
+    sudo apt update
+    sudo apt install realvnc-vnc-server realvnc-vnc-viewer
+    sudo raspi-config
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+And then enable VNC.
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+- Navigate to Interfacing Options
+- Scroll down and select VNC > Yes.
 
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
+Now test it out by running the VNC Viewer on your Mac and connecting to the IP address of the
+Raspberry Pi. If you are asked to update software after logging in, answer yes.
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+## Install Nginx
+    sudo apt install nginx
+    sudo /etc/init.d/nginx start
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+### Test web server
+Open your favorite browser and navigate to the IP of your Rapberry Pi. (i.e. http://192.168.1.62/)
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+## Install/Upgrade Node/npm
+The version of Raspbian I got at the time of this writing Dec/2019 already had node on it. In case
+yours doesn't.
 
-## 🎓 Learning Gatsby
+    apt-get install npm
+    apt-get install node@10
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
+However,
+when running npm, I got a warning that the version of npm wasn't compatible with v10 of node.js.
+So I upgraded npm with the following command:
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+    sudo npm install npm@latest -g
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+## Install Other Stuff
+    sudo apt-get install -y chromium-browser ttf-mscorefonts-installer unclutter x11-xserver-utils
+- Chromium browser (already installed)
+- web fonts
+- hide mouse pointer
+- turn off screen blanking
 
-## 💫 Deploy
+## 7 inch Display
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+    sudo vi /boot/config.txt
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+Change the resolution to 800x480.
+
+From:
+
+    # uncomment to force a console size. By default it will be display's size minus
+    # overscan.
+    #framebuffer_width=1280
+    #framebuffer_height=720
+
+To:
+
+    # uncomment to force a console size. By default it will be display's size minus
+    # overscan.
+    #framebuffer_width=1280
+    #framebuffer_height=720
+    framebuffer_width=800
+    framebuffer_height=480
+    
