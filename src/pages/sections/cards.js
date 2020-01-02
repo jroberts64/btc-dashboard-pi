@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import {
   MDBCard,
   MDBIcon,
@@ -8,7 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css"
 import "bootstrap-css-only/css/bootstrap.min.css"
 import "mdbreact/dist/css/mdb.css"
 
-const AdminCard = (props) => {
+const Card = (props) => {
   return (
     <MDBCol xl="3" md="3" className="mb-r">
     <MDBCard className="cascading-admin-card">
@@ -26,7 +26,7 @@ const AdminCard = (props) => {
   )
 }
 
-export const AdminCardLong = (props) => {
+export const CardLong = (props) => {
   return (
     <MDBCol xl="6" md="6" className="mb-r">
     <MDBCard className="cascading-admin-card">
@@ -43,4 +43,4 @@ export const AdminCardLong = (props) => {
   )
 }
 
-export default AdminCard
+export default Card

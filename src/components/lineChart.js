@@ -40,17 +40,16 @@ const LineChart = props => {
   
   function extractChartLabels(currentValue) {
     var d = new Date(currentValue.x*1000)
-    var str = d.getMonth()+1 + "/" + d.getDate() + "/" + d.getFullYear()
     return ['Jan','Feb','Mar','Arp','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()] + " " + d.getDate()
   }
 
   function extractChartValues(currentValue) {
-    return currentValue.y
+    return props.valueScale ? currentValue.y / props.valueScale : currentValue.y
   }
 
   function loadChartDataFromUrl() {
     if (typeof window !== `undefined`) {
-      fetch( props.url)
+      fetch( props.url, {cache: "no-cache"})
         .then(res => res.json())
         .then(json => {
           graphLabels = json.values.map(extractChartLabels)
@@ -65,7 +64,6 @@ const LineChart = props => {
   }
 
   useEffect( () => {
-    console.log("priceChart timer = " + timer)
     if (typeof window !== `undefined`) {
       const id = window.setTimeout(() => {
         loadChartDataFromUrl();
@@ -75,7 +73,8 @@ const LineChart = props => {
         window.clearTimeout(id);
       };
     }
-  },[timer]);
+  },[]);
+// },[timer]);
 
   return (
     <div>

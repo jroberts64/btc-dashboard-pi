@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import AdminCardSection1 from "./sections/AdminCardSection1"
+import AdminCardSection1 from "./sections/dashboard"
 import "./index.css"
 
 const IndexPage = () => (

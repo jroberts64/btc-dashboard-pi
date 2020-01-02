@@ -49,7 +49,7 @@ body{
   line-height: 1.5;
   color: #000;
   text-align: left;
-  background-color: #333;
+  background-color: #ddd;
 }
 
 a{
@@ -65,65 +65,12 @@ a{
 }
 
 main {
-  background-color: #333;
-}
-
-.navbar-brand{
-  margin-left: 15px;
-  color: #2196f3 !important;
-}
-
-.sidebar-fixed {
-  left: 0;
-  top: 0;
-  height: 100vh;
-  width: 270px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  z-index: 1050;
-  background-color: #fff;
-  padding: 1.5rem;
-  padding-top: 0;
-}
-
-
-.flexible-navbar {
-  transition: padding-left 0.5s;
-  padding-left: 270px;
-  background: #fff;
+  background-color: #ddd;
 }
 
 #content{
   margin-left: 270px;
 }    
-
-
-.sidebar-fixed .logo-wrapper img{
-  width: 100%;
-  padding: 2.5rem;
-}
-
-.list-group-item {
-  display: block !important;
-  transition: background-color 0.3s;
-}
-
-.list-group-item:hover {
-  color: #49505B;
-  text-decoration: none;
-  background-color: #f8f9fa
-}
-
-.list-group-item:hover {
-  color: #49505B;
-  text-decoration: none;
-  background-color: #f8f9fa
-}
-
-
-.list-group .active {
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  border-radius: 5px;
-}
 
 .card-title{
   font-size: 1.5rem;
@@ -138,17 +85,6 @@ main {
 .full {
   height: 70vh;
 }
-
-.bad-gateway-row {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 55%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-
 .card .view.gradient-card-header {
   padding: 1rem 1rem;
   text-align: center;
@@ -159,14 +95,14 @@ main {
 }
 
 .cascading-admin-card {
-  background-color: #554;
+  background-color: #eee;
   border-radius: 8px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .cascading-admin-card .admin-up {
-  margin-left: 4%;
-  margin-right: 4%;
+  margin-left: 4px;
+  margin-right: 4px;
   margin-top: -8px;
 }
 
@@ -195,7 +131,7 @@ main {
 .classic-admin-card .card-body {
   color: #fff;
   margin-bottom: 0;
-  padding: 0.9rem;
+  padding: 0.7rem;
 }
 .classic-admin-card .card-body p {
   font-size: 13px;
@@ -203,7 +139,7 @@ main {
   margin-bottom: 0;
 }
 .classic-admin-card .card-body h4 {
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .form-inline{
@@ -234,9 +170,6 @@ main {
   .flexible-content {
     padding-left: 0;
   }
-  .flexible-navbar {
-    padding-left: 10px;
-  }
 
   #content{
     margin-left: 0px;
@@ -247,7 +180,7 @@ main {
   }
   
   .card.cascading-admin-card {
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-left: 4px;
     margin-right: 4px;
   } 

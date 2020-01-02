@@ -5,7 +5,7 @@
 }
 
 .wrapper {
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   width: 780px;
   height: 460px;
 	margin: auto;
@@ -15,19 +15,4 @@
 	border-bottom: 10px solid #000;
 	padding: 10px;
 }
-
-/*
-#menu {
-	width: 180px;
-	float: left;
-	padding: 10px;
-	border-right: 1px solid #000;
-}
-
-#content {
-	margin-left: 200px;
-	border-left: 1px solid #000;
-	padding: 10px;
-	line-height: 2em;
-} */
 

@@ -54,18 +54,72 @@ easily hacked!
 
     sudo raspi-config
 
-Read the menu options and do the following:
-- change your password or you will be hacked!
-- Interfacing Options -> SSH -> Yes (note: the ssh file we added above is a one-time thing)
+Based on the menu options do the following:
+- change your password (you will be hacked if you don't!)
+- Interfacing Options -> SSH -> Yes (note: the file to enable ssh we added above is a one-time thing. It gets deleted after you login.)
 
+### Install Nginx
+    sudo apt install nginx
+    sudo /etc/init.d/nginx start
 
-## Enable VNC Server
-Now let's install VNC Server so we have access to a GUI in case we want it in the future.
+### Test web server
+Open your favorite browser and navigate to the IP of your Rapberry Pi. (i.e. http://192.168.1.62/)
 
-On your Mac, go to [this link](https://www.realvnc.com/en/connect/download/viewer/) to
-download and then install the Real VNC Viewer.
+### Install/Upgrade Node/npm
+The version of Raspbian I got at the time of this writing Dec/2019 already had node on it. In case
+yours doesn't.
 
-On your Raspberry Pi, run the following:
+    apt-get install npm
+    apt-get install node@10
+
+However,
+when running npm, I got a warning that the version of npm wasn't compatible with v10 of node.js.
+So I upgraded npm with the following command:
+
+    sudo npm install npm@latest -g
+
+### Install Other Stuff
+    sudo apt-get install -y chromium-browser ttf-mscorefonts-installer
+- Chromium browser (already installed)
+- web fonts
+
+    unclutter x11-xserver-utils
+
+- hide mouse pointer
+- turn off screen blanking
+
+### Configure 7 inch Display
+
+    sudo vi /boot/config.txt
+
+Add the following line to the file if you need to rotate the screen 
+180 degrees. Some cases turn the screen upside down.
+
+    lcd_rotatee=2
+
+### Kiosk Mode
+
+Kiosk mode is using the Raspberry Pi as a dedicated device like a store
+display, alarm clock, weather station or bitcoin network monitoring
+device.
+
+#### Create a specialized kiosk user
+If you want to run in kiosk mode, you should create a user for this instead
+of running as the user pi. I created a user called "kiosk" as follows:
+
+    sudo adduser kiosk
+
+Now change the autologin user from pi to kiosk. 
+
+    vi /etc/lightdm/lightdm.conf
+
+Change autologin-user=pi to autologin-user=kiosk.
+
+## Enable VNC Server (optional)
+Now let's install VNC Server so we have access to a GUI from in case we want to access the GUI from a mac/pc in the future.
+
+### Raspberry Pi
+Run the following:
 
     sudo apt update
     sudo apt install realvnc-vnc-server realvnc-vnc-viewer
@@ -79,38 +133,11 @@ And then enable VNC.
 Now test it out by running the VNC Viewer on your Mac and connecting to the IP address of the
 Raspberry Pi. If you are asked to update software after logging in, answer yes.
 
-## Install Nginx
-    sudo apt install nginx
-    sudo /etc/init.d/nginx start
+### Change the resolution to 800x480 (optional)
 
-### Test web server
-Open your favorite browser and navigate to the IP of your Rapberry Pi. (i.e. http://192.168.1.62/)
-
-## Install/Upgrade Node/npm
-The version of Raspbian I got at the time of this writing Dec/2019 already had node on it. In case
-yours doesn't.
-
-    apt-get install npm
-    apt-get install node@10
-
-However,
-when running npm, I got a warning that the version of npm wasn't compatible with v10 of node.js.
-So I upgraded npm with the following command:
-
-    sudo npm install npm@latest -g
-
-## Install Other Stuff
-    sudo apt-get install -y chromium-browser ttf-mscorefonts-installer unclutter x11-xserver-utils
-- Chromium browser (already installed)
-- web fonts
-- hide mouse pointer
-- turn off screen blanking
-
-## 7 inch Display
-
-    sudo vi /boot/config.txt
-
-Change the resolution to 800x480.
+Only do this if you want to mimic the size of the 7 inch display. I used
+this trick for a few days in order to test code I was writing for the
+display.
 
 From:
 
@@ -127,4 +154,12 @@ To:
     #framebuffer_height=720
     framebuffer_width=800
     framebuffer_height=480
-    
+  
+### Mac
+On your Mac, go to [this link](https://www.realvnc.com/en/connect/download/viewer/) to
+download and then install the Real VNC Viewer.
+
+### PC
+ToDo
+
+
