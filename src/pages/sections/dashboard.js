@@ -8,7 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css"
 import "bootstrap-css-only/css/bootstrap.min.css"
 import "mdbreact/dist/css/mdb.css"
 
-const AdminCardSection1 = () => {
+const Dashboard = () => {
   const [price, setPrice] = useState(0)
   const [blocksToNextHalving, setBlocksToNextHalving] = useState(0)
   const [timer, setTimer] = useState(0)
@@ -169,4 +169,4 @@ const AdminCardSection1 = () => {
   )
 }
 
-export default AdminCardSection1
+export default Dashboard

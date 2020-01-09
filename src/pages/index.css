@@ -49,7 +49,11 @@ body{
   line-height: 1.5;
   color: #000;
   text-align: left;
-  background-color: #ddd;
+  background-color: #ccc;
+}
+
+main {
+  background-color: #ccc;
 }
 
 a{
@@ -64,9 +68,6 @@ a{
   background-color: #e9ecef !;
 }
 
-main {
-  background-color: #ddd;
-}
 
 #content{
   margin-left: 270px;
@@ -95,7 +96,7 @@ main {
 }
 
 .cascading-admin-card {
-  background-color: #eee;
+  background-color: #999;
   border-radius: 8px;
   margin-top: 5px;
 }

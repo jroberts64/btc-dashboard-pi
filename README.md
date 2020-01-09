@@ -109,6 +109,10 @@ of running as the user pi. I created a user called "kiosk" as follows:
 
     sudo adduser kiosk
 
+Add user to gpio group so we can access motion sensor
+
+    sudo adduser gpio
+
 Now change the autologin user from pi to kiosk. 
 
     vi /etc/lightdm/lightdm.conf

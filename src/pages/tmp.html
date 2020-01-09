@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <style data-href="/styles.bc1936067fa768ee514b.css">
+      header {
+        background: url(https://source.unsplash.com/random/600x400);
+        text-align: center;
+        width: 100%;
+        height: auto;
+        background-size: cover;
+        background-attachment: fixed;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0 0 85% 85%/30%;
+      }
+      header .overlay {
+        width: 100%;
+        height: 100%;
+        padding: 40px;
+        color: #648989;
+        text-shadow: 1px 1px 1px #333;
+        background-image: linear-gradient(
+          135deg,
+          rgba(109, 0, 172, 0.41) 10%,
+          rgba(1, 152, 49, 0.42)
+        );
+      }
+      h1 {
+        background-color: transparent;
+        line-height: 70%;
+      }
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      main,
+      menu,
+      nav,
+      section,
+      summary {
+        display: block;
+      }
+      audio,
+      canvas,
+      progress,
+      video {
+        display: inline-block;
+      }
+      audio:not([controls]) {
+        display: none;
+        height: 0;
+      }
+      progress {
+        vertical-align: baseline;
+      }
+      [hidden],
+      template {
+        display: none;
+      }
+      abbr[title] {
+        border-bottom: none;
+        text-decoration: underline;
+        -webkit-text-decoration: underline dotted;
+        text-decoration: underline dotted;
+      }
+      dfn {
+        font-style: italic;
+      }
+      mark {
+        background-color: #ff0;
+        color: #000;
+      }
+      img {
+        border-style: none;
+      }
+      svg:not(:root) {
+        overflow: hidden;
+      }
+      figure {
+        margin: 1em 40px;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font: inherit;
+        margin: 0;
+      }
+      optgroup {
+        font-weight: 700;
+      }
+      button,
+      input {
+        overflow: visible;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      [type="reset"],
+      [type="submit"],
+      button,
+      html [type="button"] {
+        -webkit-appearance: button;
+      }
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner,
+      button::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      [type="button"]:-moz-focusring,
+      [type="reset"]:-moz-focusring,
+      [type="submit"]:-moz-focusring,
+      button:-moz-focusring {
+        outline: 1px dotted ButtonText;
+      }
+      fieldset {
+        border: 1px solid silver;
+        margin: 0 2px;
+        padding: 0.35em 0.625em 0.75em;
+      }
+      legend {
+        box-sizing: border-box;
+        color: inherit;
+        display: table;
+        max-width: 100%;
+        padding: 0;
+        white-space: normal;
+      }
+      textarea {
+        overflow: auto;
+      }
+      [type="checkbox"],
+      [type="radio"] {
+        box-sizing: border-box;
+        padding: 0;
+      }
+      [type="number"]::-webkit-inner-spin-button,
+      [type="number"]::-webkit-outer-spin-button {
+        height: auto;
+      }
+      [type="search"] {
+        -webkit-appearance: textfield;
+        outline-offset: -2px;
+      }
+      [type="search"]::-webkit-search-cancel-button,
+      [type="search"]::-webkit-search-decoration {
+        -webkit-appearance: none;
+      }
+      ::-webkit-input-placeholder {
+        color: inherit;
+        opacity: 0.54;
+      }
+      ::-webkit-file-upload-button {
+        -webkit-appearance: button;
+        font: inherit;
+      }
+      *,
+      :after,
+      :before {
+        box-sizing: inherit;
+      }
+      img {
+        max-width: 100%;
+        padding: 0;
+        margin: 0 0 0.45rem;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: inherit;
+      }
+      hgroup {
+        padding: 0;
+        margin: 0 0 1.45rem;
+      }
+      ol,
+      ul {
+        padding: 0;
+        margin: 0 0 1.45rem 2rem;
+        list-style-position: outside;
+        list-style-image: none;
+        line-height: 50%;
+      }
+      dd,
+      dl,
+      figure,
+      p {
+        padding: 0;
+        margin: 0 0 1.45rem;
+      }
+      pre {
+        margin: 0 0 1.45rem;
+        font-size: 0.85rem;
+        line-height: 1.42;
+        background: rgba(0, 0, 0, 0.04);
+        border-radius: 3px;
+        overflow: auto;
+        word-wrap: normal;
+        padding: 1.45rem;
+      }
+      table {
+        font-size: 1rem;
+        line-height: 1.45rem;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      fieldset,
+      table {
+        padding: 0;
+        margin: 0 0 1.45rem;
+      }
+      blockquote {
+        padding: 0;
+        margin: 0 1.45rem 1.45rem;
+      }
+      form,
+      iframe,
+      noscript {
+        padding: 0;
+        margin: 0 0 1.45rem;
+      }
+      hr {
+        padding: 0;
+        margin: 0 0 calc(1.45rem - 1px);
+        background: rgba(0, 0, 0, 0.2);
+        border: none;
+        height: 1px;
+      }
+      address {
+        padding: 0;
+        margin: 0 0 1.45rem;
+      }
+      b,
+      dt,
+      strong,
+      th {
+        font-weight: 700;
+      }
+      li {
+        margin-bottom: 0.725rem;
+      }
+      ol li,
+      ul li {
+        padding-left: 0;
+      }
+      li > ol,
+      li > ul {
+        margin-left: 1.45rem;
+        margin-bottom: 0.725rem;
+        margin-top: 0.725rem;
+      }
+      blockquote :last-child,
+      li :last-child,
+      p :last-child {
+        margin-bottom: 0;
+      }
+      li > p {
+        margin-bottom: 0.725rem;
+      }
+      code,
+      kbd,
+      samp {
+        font-size: 0.85rem;
+        line-height: 1.45rem;
+      }
+      abbr,
+      abbr[title],
+      acronym {
+        border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+        cursor: help;
+      }
+      abbr[title] {
+        text-decoration: none;
+      }
+      td,
+      th,
+      thead {
+        text-align: left;
+      }
+      td,
+      th {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        font-feature-settings: "tnum";
+        -moz-font-feature-settings: "tnum";
+        -ms-font-feature-settings: "tnum";
+        -webkit-font-feature-settings: "tnum";
+        padding: 0.725rem 0.96667rem calc(0.725rem - 1px);
+      }
+      td:first-child,
+      th:first-child {
+        padding-left: 0;
+      }
+      td:last-child,
+      th:last-child {
+        padding-right: 0;
+      }
+      code,
+      tt {
+        background-color: rgba(204, 208, 2, 0.2);
+        font-family: SFMono-Regular, Consolas, Roboto Mono, Droid Sans Mono,
+          Liberation Mono, Menlo, Courier, monospace;
+        padding: 0.4em 0.6em;
+        border-radius: 10px;
+        border-left: 8px;
+        border-left-color: #5b6302;
+        border-left-style: solid;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+      }
+      pre code {
+        background: none;
+        line-height: 1.42;
+      }
+      code:after,
+      code:before,
+      tt:after,
+      tt:before {
+        letter-spacing: -0.2em;
+        content: " ";
+      }
+      pre code:after,
+      pre code:before,
+      pre tt:after,
+      pre tt:before {
+        content: "";
+      }
+      .heading-1 {
+        color: #f60;
+      }
+      .heading-1,
+      .heading-2 {
+        text-shadow: 0 1px 1px #fff;
+        text-transform: uppercase;
+      }
+      .heading-2 {
+        color: #1589ff;
+      }
+      .divider-1 span {
+        display: block;
+        width: 50px;
+        height: 1px;
+        background-color: #f60;
+      }
+      .cardContainer {
+        justify-content: space-around;
+        vertical-align: center;
+      }
+      .cardContainer,
+      .enclosingRow {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 1em;
+      }
+      .enclosingRow {
+        align-items: top;
+        justify-content: center;
+      }
+      .textContent {
+        display: flex;
+        max-width: 600px;
+        min-width: 300px;
+        padding: 0.6em;
+        flex: 1 1;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+      .textItem {
+        margin-bottom: 8px;
+        margin-top: 8px;
+      }
+      .imageContent {
+        display: flex;
+        max-width: 600px;
+        min-width: 400px;
+        padding: 0.6em;
+        flex: 1 1;
+        align-items: center;
+        flex-direction: column;
+        margin: 10px;
+      }
+      .cards-list {
+        z-index: 0;
+        width: 100%;
+        display: flex;
+        align-content: flex-start;
+        flex-wrap: wrap;
+      }
+      .card {
+        margin: 40px;
+        width: 160px;
+        height: 160px;
+        border-radius: 30px;
+        box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+          -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+        cursor: pointer;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+      .card .card_image,
+      .card .card_image img {
+        width: inherit;
+        height: inherit;
+        border-radius: 30px;
+      }
+      .card .card_image img {
+        -o-object-fit: cover;
+        object-fit: cover;
+      }
+      .card .card_title {
+        text-align: center;
+        border-radius: 0 0 30px 30px;
+        font-family: sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        margin-top: -190px;
+        height: 30px;
+      }
+      .card:hover {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+        box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+          -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+      }
+      .title-white {
+        color: #fff;
+      }
+      .title-black {
+        color: #000;
+      }
+      @media (max-width: 500px) {
+        .card-list {
+          flex-direction: column;
+        }
+      }
+    </style>
+    <meta name="generator" content="Gatsby 2.18.14" />
+    <title data-react-helmet="true">Home | jack-roberts.com</title>
+    <meta
+      data-react-helmet="true"
+      name="description"
+      content="Jack&#x27;s playground."
+    />
+    <meta data-react-helmet="true" property="og:title" content="Home" />
+    <meta
+      data-react-helmet="true"
+      property="og:description"
+      content="Jack&#x27;s playground."
+    />
+    <meta data-react-helmet="true" property="og:type" content="website" />
+    <meta data-react-helmet="true" name="twitter:card" content="summary" />
+    <meta
+      data-react-helmet="true"
+      name="twitter:creator"
+      content="jack roberts"
+    />
+    <meta data-react-helmet="true" name="twitter:title" content="Home" />
+    <meta
+      data-react-helmet="true"
+      name="twitter:description"
+      content="Jack&#x27;s playground."
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-48x48.png?v=6610a5a1ef70faa00b18e9226bf5844e"
+    />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#333333" />
+    <link
+      rel="apple-touch-icon"
+      sizes="48x48"
+      href="/icons/icon-48x48.png?v=6610a5a1ef70faa00b18e9226bf5844e"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/icons/icon-72x72.png?v=6610a5a1ef70faa00b18e9226bf5844e"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="96x96"
+      href="/icons/icon-96x96.png?v=6610a5a1ef70faa00b18e9226bf5844e"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/icons/icon-144x144.png?v=6610a5a1ef70faa00b18e9226bf5844e"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="192x192"
+      href="/icons/icon-192x192.png?v=6610a5a1ef70faa00b18e9226bf5844e"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="256x256"
+      href="/icons/icon-256x256.png?v=6610a5a1ef70faa00b18e9226bf5844e"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="384x384"
+      href="/icons/icon-384x384.png?v=6610a5a1ef70faa00b18e9226bf5844e"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="512x512"
+      href="/icons/icon-512x512.png?v=6610a5a1ef70faa00b18e9226bf5844e"
+    />
+    <link as="script" rel="preload" href="/styles-7d809260c8a5dc64f666.js" />
+    <link
+      as="script"
+      rel="preload"
+      href="/component---src-pages-index-js-ca0384223ccd7361d456.js"
+    />
+    <link as="script" rel="preload" href="/commons-c30d9d0fa1c33c14a392.js" />
+    <link as="script" rel="preload" href="/app-c03f2e34a2a0cd26aaf2.js" />
+    <link
+      as="script"
+      rel="preload"
+      href="/webpack-runtime-96d44ae8b5fdb78c61b0.js"
+    />
+    <link
+      as="fetch"
+      rel="preload"
+      href="/page-data/index/page-data.json"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="___gatsby">
+      <div
+        style="outline:none"
+        tabindex="-1"
+        role="group"
+        id="gatsby-focus-wrapper"
+      >
+        <header>
+          <div class="overlay">
+            <a
+              aria-current="page"
+              style="color:white;text-decoration:none"
+              class=""
+              href="/"
+              ><h1>
+                jack-roberts.com<br />
+                <span style="font-size:60%;line-height:70%">home</span>
+              </h1></a
+            >
+          </div>
+        </header>
+        <div style="margin:0 auto;max-width:1024px;padding-top:0">
+          <div
+            style="background:#ffffff;padding-top:0px;font-weight:bold;margin-top:1rem"
+          >
+            <ul
+              style="list-style:none;display:flex;justify-content:space-evenly"
+            >
+              <li>
+                <a
+                  aria-current="page"
+                  style="color:#777;text-decoration:none"
+                  class=""
+                  href="/"
+                  >home</a
+                >
+              </li>
+              <li>
+                <a style="color:#777;text-decoration:none" href="/about"
+                  >about</a
+                >
+              </li>
+              <li>
+                <a style="color:#777;text-decoration:none" href="/projects"
+                  >projects</a
+                >
+              </li>
+              <li>
+                <a style="color:#777;text-decoration:none" href="/interests"
+                  >interests</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div style="margin-left:10px">
+            <hr />
+            <main>
+              <div class="enclosingRow">
+                <div class="textContent">
+                  <div class="textItem" align="justify">
+                    <b>Welcome to my humble space on the interwebs.</b>
+                  </div>
+                  <div class="textItem" align="justify">
+                    It exists mainly to test ideas and stay current with
+                    what&#x27;s happening in the world of software/systems
+                    development. I don&#x27;t get the chance to code much
+                    anymore in my day job and this keeps me sane and hopefully
+                    relevant - assuming I pick relevant things to tinker with.
+                  </div>
+                  <div class="textItem" align="justify">
+                    Everything here was created using ReactJS, CSS and HTML.
+                    Gatsby was used to make S3 deployments feasible and the site
+                    cheap (pennies/mo) to host. A future project is to implement
+                    this site using
+                    <!-- -->
+                    <a
+                      href="https://aws.amazon.com/amplify/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >AWS Amplify</a
+                    >.<!-- -->
+                    <!-- -->and compare the features, complexity and cost. One
+                    thing I like about Gatsby is the dirt easy routing.
+                  </div>
+                </div>
+                <div class="imageContent">
+                  <img
+                    style="border-radius:20%;box-shadow:5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22)"
+                    src="/static/pets-15cd7352cf4a7ce8068f95d86d2975c7.png"
+                    alt="pets"
+                  /><em>&quot;more cheese please&quot;</em>
+                </div>
+                <code
+                  class="textItem"
+                  align="justify"
+                  style="margin:.6em;font-size:75%"
+                  >“The fact that we live at the bottom of a deep gravity well,
+                  on the surface of a gas covered planet going around a nuclear
+                  fireball 90 million miles away and think this to be normal is
+                  obviously some indication of how skewed our perspective tends
+                  to be.” <br />― <b>Douglas Adams</b></code
+                >
+              </div>
+            </main>
+            <hr />
+          </div>
+          <div>
+            <footer
+              padding="1rem 1rem 1rem 1rem"
+              align="right"
+              style="font-size:75%"
+            >
+              ©
+              <!-- -->2019<!-- -->
+              <!-- -->jack roberts<!-- -->, Powered by
+              <a href="https://www.reactjs.org">Reactjs</a>
+              <!-- -->
+              &amp;
+              <!-- -->
+              <a href="https://www.gatsbyjs.org">Gatsby</a>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script id="gatsby-script-loader">
+      /*<![CDATA[*/ window.pagePath = "/" /*]]>*/
+    </script>
+    <script id="gatsby-chunk-mapping">
+      /*<![CDATA[*/ window.___chunkMapping = {
+        app: ["/app-c03f2e34a2a0cd26aaf2.js"],
+        "component---src-pages-404-js": [
+          "/component---src-pages-404-js-9b37774f8033162af493.js",
+        ],
+        "component---src-pages-about-js": [
+          "/component---src-pages-about-js-1b1acd121ae4b19be89c.js",
+        ],
+        "component---src-pages-index-js": [
+          "/component---src-pages-index-js-ca0384223ccd7361d456.js",
+        ],
+        "component---src-pages-interests-js": [
+          "/component---src-pages-interests-js-e1c63aa1afd859d98e08.js",
+        ],
+        "component---src-pages-projects-js": [
+          "/component---src-pages-projects-js-f8a9fa9a1bc9a0ffa034.js",
+        ],
+      } /*]]>*/
+    </script>
+    <script src="/webpack-runtime-96d44ae8b5fdb78c61b0.js" async=""></script>
+    <script src="/app-c03f2e34a2a0cd26aaf2.js" async=""></script>
+    <script src="/commons-c30d9d0fa1c33c14a392.js" async=""></script>
+    <script
+      src="/component---src-pages-index-js-ca0384223ccd7361d456.js"
+      async=""
+    ></script>
+    <script src="/styles-7d809260c8a5dc64f666.js" async=""></script>
+  </body>
+</html>

@@ -13,7 +13,6 @@ import "./layout.css"
 const Layout = ({ children }) => {
   return (
     <>
-      {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
       <div className="wrapper"
         style={{
           margin: `auto`,

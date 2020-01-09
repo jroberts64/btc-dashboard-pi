@@ -1,13 +1,13 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import AdminCardSection1 from "./sections/dashboard"
+import Dashboard from "./sections/dashboard"
 import "./index.css"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <AdminCardSection1 />
+    <Dashboard />
   </Layout>
 )
 
