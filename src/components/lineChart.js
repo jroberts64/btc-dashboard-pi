@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Line } from "react-chartjs-2"
 
 const LineChart = props => {
-  const [chartData, setChartData] = useState([])
-  const [timer, setTimer] = useState(0)
 
   var graphLabels = [];
   var graphValues = [];
@@ -47,38 +45,13 @@ const LineChart = props => {
     return props.valueScale ? currentValue.y / props.valueScale : currentValue.y
   }
 
-  function loadChartDataFromUrl() {
-    if (typeof window !== `undefined`) {
-      fetch( props.url, {cache: "no-cache"})
-        .then(res => res.json())
-        .then(json => {
-          graphLabels = json.values.map(extractChartLabels)
-          graphValues = json.values.map(extractChartValues)
-          setChartData(setupChartData(graphLabels,graphValues))
-        })
-        .catch(err => {
-          console.log(err)   
-        })
-        
-    }
-  }
-
-  useEffect( () => {
-    if (typeof window !== `undefined`) {
-      const id = window.setTimeout(() => {
-        loadChartDataFromUrl();
-        timer ? setTimer(-timer) : setTimer(300000) 
-      }, Math.abs(timer));
-      return () => {
-        window.clearTimeout(id);
-      };
-    }
-  },[]);
-// },[timer]);
+  graphLabels = props.chartDataAndLabels.map(extractChartLabels)
+  graphValues = props.chartDataAndLabels.map(extractChartValues)
+  console.log("refreshing line chart! ")
 
   return (
     <div>
-      <Line data={chartData} />
+      <Line data={setupChartData(graphLabels,graphValues)} />
     </div>
   )
 }

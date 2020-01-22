@@ -12,8 +12,11 @@ const Dashboard = () => {
   const [price, setPrice] = useState(0)
   const [blocksToNextHalving, setBlocksToNextHalving] = useState(0)
   const [timer, setTimer] = useState(0)
-  const lostBitcoins = 1000000
   const [height, setHeight] = useState(0)
+  const [priceData, setPriceData] = useState([])
+  const [volumeData, setVolumeData] = useState([])
+
+  const lostBitcoins = 2000000
 
   function convertBlocksToMinutes(blocks) {
     // blocks take 10 minutes to mine on average
@@ -68,11 +71,12 @@ const Dashboard = () => {
   }
 
   function getStock2FlowPrice(s2f) {
-    //  Model price (USD) = exp(-1,84) * SF ^ 3,36
+    //  S2F Model price (USD) = exp(-1,84) * SF ^ 3,36
     return Math.exp(-1.84) * Math.pow(s2f,3.36)
   }
 
   function loadData() {
+    console.log("Loading data @ " + getDateTime())
     if (typeof window !== `undefined`) {
       fetch("https://blockchain.info/ticker", {cache: "no-cache"})
         .then(res => res.json())
@@ -95,9 +99,30 @@ const Dashboard = () => {
     }
   }
 
+  // CHART FUNCTIONS
+  function loadChartDataFromUrl(url, func) {
+    if (typeof window !== `undefined`) {
+      fetch( url, {cache: "no-cache"})
+        .then(res => res.json())
+        .then(json => {
+          func(json.values)
+        })
+        .catch(err => {
+          console.log(err)   
+        })
+        
+    }
+  }
+
   useEffect( () => {
       if (typeof window !== `undefined`) {
         const id = window.setTimeout(() => {
+          loadChartDataFromUrl(
+            "https://api.blockchain.info/charts/market-price?timespan=180days&format=json&cors=true",
+            setPriceData);
+          loadChartDataFromUrl(
+            "https://api.blockchain.info/charts/trade-volume?timespan=180days&format=json&cors=true",
+            setVolumeData);
           loadData();
           timer ? setTimer(-timer) : setTimer(300000) 
         }, Math.abs(timer));
@@ -135,7 +160,7 @@ const Dashboard = () => {
         <Card
           desc="Stock 2 Flow Price"
           value={fmtCurrency(getStock2FlowPrice(getStock2Flow(height)),2)}
-          icon="chart-line"
+          icon="money-bill"
           class="red accent-5"
         />
         <Card
@@ -148,14 +173,14 @@ const Dashboard = () => {
       <MDBRow className="mb-4" style={{ marginTop: "-10px" }}>
       <MDBCol xl="6" md="6" className="mb-r">
           <LineChart 
-            url="https://api.blockchain.info/charts/market-price?timespan=180days&format=json&cors=true"
             chartTitle="Bitcoin Price"
+            chartDataAndLabels={priceData}
           />
         </MDBCol>
         <MDBCol xl="6" md="6" className="mb-r">
         <LineChart 
-          url="https://api.blockchain.info/charts/trade-volume?timespan=180days&format=json&cors=true"
           chartTitle="Exchange Volume ($M)"
+          chartDataAndLabels={volumeData}
           valueScale="1000000"
         />
         </MDBCol>
