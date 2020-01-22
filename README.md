@@ -120,7 +120,8 @@ Now change the autologin user from pi to kiosk.
 Change autologin-user=pi to autologin-user=kiosk.
 
 ## Enable VNC Server (optional)
-Now let's install VNC Server so we have access to a GUI from in case we want to access the GUI from a mac/pc in the future.
+Now let's install VNC Server in case we want to access the GUI from a mac/pc in the future. I prefer ssh, but did this initially in order to do development
+without needed the 7 inch display attached to the Raspberry Pi.
 
 ### Raspberry Pi
 Run the following:
@@ -139,9 +140,8 @@ Raspberry Pi. If you are asked to update software after logging in, answer yes.
 
 ### Change the resolution to 800x480 (optional)
 
-Only do this if you want to mimic the size of the 7 inch display. I used
-this trick for a few days in order to test code I was writing for the
-display.
+Only do this if you want to mimic the size of the 7 inch display when you are remotely accessing on your mac or PC. I used this trick for a few days in
+order to test code I was writing for the display.
 
 From:
 
