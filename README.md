@@ -2,7 +2,7 @@
 
 ## Get Raspberry Pi on your SD card
 [These instructions](https://www.raspberrypi.org/documentation/installation/installing-images/) are
-more detailed. Or you can use my appreviated ones below.
+more detailed. Or you can use my abbreviated ones below.
 
 Open a terminal and move to a temporary folder.For example:
 
