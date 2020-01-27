@@ -3,7 +3,8 @@
 ## Get Raspberry Pi on your SD card
 [These instructions](https://www.raspberrypi.org/documentation/installation/installing-images/) are
 more detailed. Or you can use my appreviated ones below.
-Open a terminal and move to a temporary folder.
+
+Open a terminal and move to a temporary folder.For example:
 
     cd ~/Downloads
 
@@ -13,8 +14,8 @@ to your hard drive and unzip it.
     curl -L https://downloads.raspberrypi.org/raspbian_full_latest --output raspbian.zip
     unzip raspbin.zip
 
-Download [balenaEtcher](https://www.balena.io/etcher/). Run it and Point belanaEtcher at the Rasbian image
-and your SD card. When complete your SD card should be renamed to boot and cotain the rasbian image.
+Download [balenaEtcher](https://www.balena.io/etcher/). Run it and help belanaEtcher find the Raspbian image
+you just downloaded and the SD card you have insterted into your computer. When complete your SD card should be renamed to boot and contain the rasbian image. On a Mac you can see it with this command.
 
     ls /Volumes/boot
 
@@ -25,8 +26,10 @@ and your SD card. When complete your SD card should be renamed to boot and cotai
     sudo nano /Volumes/boot/ wpa_supplicant.conf
 
 Then add the text below, replacing  \*\*ssid_name\*\* and \*\*ssid_password\*\* with your wifi name
-and password. Note: don't use your guest network. ssh won't work on your
-guest network assuming it is configured properly.
+and password. 
+
+Note: don't use your guest network. Most modern Wifi routers block communication between devices
+on the guest network.
 
     country=US
     update_config=1
@@ -42,8 +45,11 @@ guest network assuming it is configured properly.
 
 ## SSH into your Raspberry Pi
 Turn on your Raspberry Pi. LEDs should flash and it will connect to your Wifi. Choose your favorite
-method to figure out what devices are connected to your Wifi network and find the IP address of your
-Raspberry Pi. It'll look something like 192.168.1.62. We'll use this in our examples below.
+method (i.e. http://192.168.1.1) to figure out what devices are connected to your Wifi network 
+and find the IP address of your
+Raspberry Pi. It'll look something like 192.168.1.62. We'll use this IP in our examples below.
+
+Login to you Raspberry Pi.
 
     ssh pi@192.168.1.62
 
@@ -54,8 +60,8 @@ easily hacked!
 
     sudo raspi-config
 
-Based on the menu options do the following:
-- change your password (you will be hacked if you don't!)
+Usethe menu options do the following:
+- change your password (Important: More than your R Pi will be hacked if you don't change the default pwd!)
 - Interfacing Options -> SSH -> Yes (note: the file to enable ssh we added above is a one-time thing. It gets deleted after you login.)
 
 ### Install Nginx
@@ -79,16 +85,15 @@ So I upgraded npm with the following command:
     sudo npm install npm@latest -g
 
 ### Install Other Stuff
-    sudo apt-get install -y chromium-browser ttf-mscorefonts-installer
-- Chromium browser (already installed)
+Install:
+- Chromium browser (probably already installed)
 - web fonts
 
-    unclutter x11-xserver-utils
+    sudo apt-get install -y chromium-browser ttf-mscorefonts-installer
 
-- hide mouse pointer
-- turn off screen blanking
 
 ### Configure 7 inch Display
+Edit the boot config:
 
     sudo vi /boot/config.txt
 
@@ -118,6 +123,12 @@ Now change the autologin user from pi to kiosk.
     vi /etc/lightdm/lightdm.conf
 
 Change autologin-user=pi to autologin-user=kiosk.
+
+#### Hide Mouse Pointer
+
+    unclutter x11-xserver-utils
+
+
 
 ## Enable VNC Server (optional)
 Now let's install VNC Server in case we want to access the GUI from a mac/pc in the future. I prefer ssh, but did this initially in order to do development
