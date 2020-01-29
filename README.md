@@ -1,5 +1,9 @@
 # Getting the OS on your Raspberry Pi
 
+## Demo
+
+Here's a [demo of the dashboard](http://btc.jack-roberts.com) if you'd like to see what it looks like.
+
 ## Get Raspberry Pi on your SD card
 [These instructions](https://www.raspberrypi.org/documentation/installation/installing-images/) are
 more detailed. Or you can use my abbreviated ones below.
@@ -177,4 +181,6 @@ download and then install the Real VNC Viewer.
 ### PC
 ToDo
 
+# Building the Hardware
+Todo
 
