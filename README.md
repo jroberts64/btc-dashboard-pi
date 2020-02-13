@@ -132,6 +132,13 @@ Change autologin-user=pi to autologin-user=kiosk.
 
     unclutter x11-xserver-utils
 
+## Auto WiFi Configuration (optional)
+
+### Setup Wireless Access Point
+
+* [Enable WAP](https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md)
+* [Better Instructions?](https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/157-raspberry-pi-auto-wifi-hotspot-switch-internet)
+
 
 
 ## Enable VNC Server (optional)

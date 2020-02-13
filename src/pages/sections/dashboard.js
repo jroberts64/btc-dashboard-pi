@@ -16,7 +16,7 @@ const Dashboard = () => {
   const [priceData, setPriceData] = useState([])
   const [volumeData, setVolumeData] = useState([])
 
-  const lostBitcoins = 2000000
+  const lostBitcoins = 1500000
 
   function convertBlocksToMinutes(blocks) {
     // blocks take 10 minutes to mine on average
