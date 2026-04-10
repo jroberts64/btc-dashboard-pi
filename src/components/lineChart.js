@@ -1,5 +1,27 @@
 import React from "react"
 import { Line } from "react-chartjs-2"
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from "chart.js"
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+)
 
 const LineChart = props => {
 
@@ -13,7 +35,7 @@ const LineChart = props => {
         {
           label: props.chartTitle,
           fill: true,
-          lineTension: 0.1,
+          tension: 0.1,
           backgroundColor: "rgba(75,192,192,0.4)",
           borderColor: "rgba(75,192,192,1)",
           borderCapStyle: "butt",
@@ -35,10 +57,10 @@ const LineChart = props => {
     }
     return data;
   }
-  
+
   function extractChartLabels(currentValue) {
     var d = new Date(currentValue.x*1000)
-    return ['Jan','Feb','Mar','Arp','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()] + " " + d.getDate()
+    return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()] + " " + d.getDate()
   }
 
   function extractChartValues(currentValue) {

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react"
-import { MDBRow, MDBCol } from "mdbreact"
 import LineChart from "../../components/lineChart.js"
 import Card, { CardLong } from "./cards.js"
 import getDateTime from "../../lib/dateTime.js"
 import MyClock from "../../components/clock.js"
 import "@fortawesome/fontawesome-free/css/all.min.css"
-import "bootstrap-css-only/css/bootstrap.min.css"
-import "mdbreact/dist/css/mdb.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 const Dashboard = () => {
   const [price, setPrice] = useState(0)
@@ -50,7 +48,7 @@ const Dashboard = () => {
         .format(num)
   }
   function fmtCurrency(num, decimals = 0) {
-    return "$" + new Intl.NumberFormat("en-US", 
+    return "$" + new Intl.NumberFormat("en-US",
       { maximumFractionDigits: decimals,
         minimumFractionDigits: decimals
        })
@@ -95,7 +93,7 @@ const Dashboard = () => {
           .catch(err => {
             console.log(err)
           })
-        
+
     }
   }
 
@@ -108,9 +106,9 @@ const Dashboard = () => {
           func(json.values)
         })
         .catch(err => {
-          console.log(err)   
+          console.log(err)
         })
-        
+
     }
   }
 
@@ -124,7 +122,7 @@ const Dashboard = () => {
             "https://api.blockchain.info/charts/trade-volume?timespan=180days&format=json&cors=true",
             setVolumeData);
           loadData();
-          timer ? setTimer(-timer) : setTimer(300000) 
+          timer ? setTimer(-timer) : setTimer(300000)
         }, Math.abs(timer));
           return () => {
           window.clearTimeout(id);
@@ -135,16 +133,16 @@ const Dashboard = () => {
 
   return (
     <div>
-      <MDBRow className="mb-4">
+      <div className="row mb-4">
         <CardLong desc="Last Updated" value={getDateTime()} />
         <CardLong
-          desc={"Next Halving " 
+          desc={"Next Halving "
             + getDateTime(estimatedDayOfNextHalving(blocksToNextHalving))
             + " In..."}
           value={timeToHalving(blocksToNextHalving)}
         />
-      </MDBRow>
-      <MDBRow className="mb-4">
+      </div>
+      <div className="row mb-4">
         <Card
           desc="BTC Price USD"
           value={fmtCurrency(price,2)}
@@ -169,27 +167,27 @@ const Dashboard = () => {
           icon="hourglass-half"
           class="blue accent-5"
         />
-      </MDBRow>
-      <MDBRow className="mb-4" style={{ marginTop: "-10px" }}>
-      <MDBCol xl="6" md="6" className="mb-r">
-          <LineChart 
+      </div>
+      <div className="row mb-4" style={{ marginTop: "-10px" }}>
+        <div className="col-xl-6 col-md-6 mb-r">
+          <LineChart
             chartTitle="Bitcoin Price"
             chartDataAndLabels={priceData}
           />
-        </MDBCol>
-        <MDBCol xl="6" md="6" className="mb-r">
-        <LineChart 
-          chartTitle="Exchange Volume ($M)"
-          chartDataAndLabels={volumeData}
-          valueScale="1000000"
-        />
-        </MDBCol>
-      </MDBRow>
-      <MDBRow style={{ marginTop: "-10px", fontSize: "100%", textAlign: "right"}}>
-        <MDBCol xl="12" md="12" className="mb-r">
+        </div>
+        <div className="col-xl-6 col-md-6 mb-r">
+          <LineChart
+            chartTitle="Exchange Volume ($M)"
+            chartDataAndLabels={volumeData}
+            valueScale="1000000"
+          />
+        </div>
+      </div>
+      <div className="row" style={{ marginTop: "-10px", fontSize: "100%", textAlign: "right"}}>
+        <div className="col-xl-12 col-md-12 mb-r">
           <MyClock />
-        </MDBCol>
-      </MDBRow>
+        </div>
+      </div>
     </div>
   )
 }
