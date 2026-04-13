@@ -7,6 +7,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 const Dashboard = () => {
+    // This is a test
+    // This is test 2
   const [price, setPrice] = useState(0)
   const [blocksToNextHalving, setBlocksToNextHalving] = useState(0)
   const [timer, setTimer] = useState(0)
